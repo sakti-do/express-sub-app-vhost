@@ -1,6 +1,6 @@
 const express = require('express')
 const vhost = require('vhost')
-global._ = require('lodash') // import lodash globally
+Object.defineProperty(global, '_', {value: require('lodash')}) // import lodash globally
 
 // main-app
 const app = express()
