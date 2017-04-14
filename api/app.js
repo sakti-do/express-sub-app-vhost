@@ -23,6 +23,9 @@ app.use(function(req, res, next) {
 
 // error-handler-middleware has err as the first parameter
 app.use(function(err, req, res, next) {
+  if (res.headersSent) {
+    return next(err)
+  }
   let json = {} // ensure response in JSON format
 
   if(_.isError(err)){
